@@ -206,6 +206,14 @@ export class RiotApi {
 						sumonners_sucess++;
 					} else {
 						sumonners_failed++;
+						await prisma.accounts_analyzed.create({
+							data: {
+								puuID: matchData.info.participants[i].puuid,
+								status: "NOT_ANALYZED",
+								gameName: "404",
+								tagName: matchData.info.participants[i].riotIdTagline
+							}
+						})
 					}
 				}
 
