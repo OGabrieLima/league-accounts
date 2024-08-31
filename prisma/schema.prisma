@@ -16,6 +16,8 @@ datasource db {
 model accounts_analyzed{
   id            Int       @id   @default(autoincrement())
   puuID         String    @unique
+  gameName      String
+  tagName       String
   status        String    
   analyzed_at   DateTime?
   created_at  DateTime @default(now())
@@ -23,7 +25,7 @@ model accounts_analyzed{
 
 model matches_analyzed {
   id            Int       @id @default(autoincrement())
-  match_id      String
+  match_id      String    @unique
   status        String
   analyzed_at   DateTime?
   created_at    DateTime @default(now())
@@ -32,7 +34,6 @@ model matches_analyzed {
 model matches_info {
   id                  Int @id @default(autoincrement())
   match_id            String @unique
-  endOfGameResult     String
   gameCreation        Int
   gameDuration        Int
   gameMode            String
@@ -42,7 +43,6 @@ model matches_info {
   gameVersion         String
   mapId               Int
   championsTeam       String
-  damagePerMinute     Float
   deaths              Int
   kills               Int
   assistis            Int
@@ -53,10 +53,9 @@ model matches_info {
   tripleKill          Int
   quadraKill          Int
   pentaKill           Int
-  aces                Int
   turretsKilled       Int
-  firstBlood          Boolean
-  firstTower          Boolean
+  firstBlood          Int
+  firstTower          Int
   spellCast           Int
   queueId             Int
   bans                String

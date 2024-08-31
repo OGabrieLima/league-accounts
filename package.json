@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@prisma/client": "5.19.0",
+    "axios": "^1.7.6",
     "zod": "^3.23.8"
   }
 }
